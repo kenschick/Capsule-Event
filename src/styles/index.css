@@ -1,0 +1,76 @@
+@import './fonts.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  @apply bg-ink text-bone font-body antialiased;
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: theme('colors.gold');
+  color: theme('colors.ink');
+}
+
+/* Refined custom scrollbar — restrained, on-brand */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: theme('colors.ink'); }
+::-webkit-scrollbar-thumb {
+  background: theme('colors.hairline');
+  border-radius: 999px;
+  border: 3px solid theme('colors.ink');
+}
+::-webkit-scrollbar-thumb:hover { background: theme('colors.gold-dim'); }
+
+@layer components {
+  /* Small composed display label — caps used as a typographic choice, never for volume */
+  .eyebrow {
+    @apply font-display uppercase tracking-label text-bone-faint;
+    font-size: 0.72rem;
+  }
+  .display-xl {
+    @apply font-display tracking-tight2;
+    font-weight: 600;
+    line-height: 0.98;
+  }
+  .focusable {
+    @apply outline-none;
+  }
+  .focusable:focus-visible {
+    box-shadow: 0 0 0 2px theme('colors.ink'), 0 0 0 4px theme('colors.gold');
+    border-radius: theme('borderRadius.md');
+  }
+}
+
+/* Continuous marquee (banner) — translate by exactly one duplicated set */
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Reduced motion: neutralize transforms/animations site-wide */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

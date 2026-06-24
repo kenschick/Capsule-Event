@@ -1,0 +1,26 @@
+/*
+ * BRAND FONTS — drop-in hooks.
+ *
+ * No font files were present in the provided assets, so the site currently
+ * renders with the fallbacks declared in tokens.js (Saira / Inter / system).
+ * To load the real TuxMat ad fonts:
+ *   1. Place the files in /public/fonts/ (woff2 preferred).
+ *   2. Uncomment + adjust the @font-face blocks below to match the file names.
+ *   3. The family names ('TuxMat Display' / 'TuxMat Text') are already first in
+ *      the font stacks, so they take over automatically once loaded.
+ */
+
+/*
+@font-face {
+  font-family: 'TuxMat Display';
+  src: url('/fonts/tuxmat-display.woff2') format('woff2');
+  font-weight: 400 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'TuxMat Text';
+  src: url('/fonts/tuxmat-text.woff2') format('woff2');
+  font-weight: 300 600;
+  font-display: swap;
+}
+*/
